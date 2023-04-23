@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { increment } from "./store/slices/counter";
+import { increment, incrementBy, decrement } from "./store/slices/counter";
 
 function App() {
   const { counter } = useSelector((state) => state.counter);
@@ -19,14 +19,12 @@ function App() {
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
-      <h1>Vite + React</h1>
+      <h1>Count is {counter}</h1>
       <div className="card">
-        <button onClick={() => dispatch(increment())}>count is {counter}</button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={() => dispatch(increment())}>Increment</button>
+        <button onClick={() => dispatch(decrement())}>Decrement</button>
+        <button onClick={() => dispatch(incrementBy(2))}>Increment by 2</button>
       </div>
-      <p className="read-the-docs">Click on the Vite and React logos to learn more</p>
     </div>
   );
 }
